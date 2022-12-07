@@ -1,1 +1,112 @@
 /*** CHALLENGE 1 STYLESHEET ***/
+:root {
+    --light-gray: #dadada;
+    --dark-gray: #333333;
+}
+#posts-container {
+    max-width: 1420px;
+    margin: auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    padding: 10px;
+}
+#posts-container #primary-posts-container {
+    width: calc(50% - 20px);
+    padding-right: 20px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+}
+#posts-container #primary-posts-container .post-item {
+    width: calc(50% - 10px);
+    background: var(--light-gray);
+    min-height: 260px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+}
+#posts-container #primary-posts-container .post-item:first-child{
+    width: 100%;
+    min-height: 520px;
+    margin-right: 0;
+}
+#posts-container #primary-posts-container .post-item:last-child{
+    margin-right: 0;
+    margin-left: 10px;
+}
+#posts-container #primary-posts-container .post-item .post-image-wrap {
+    width: 100%;
+    padding-top: 56.25%;
+    position: relative;
+    overflow: hidden;
+}
+#posts-container #primary-posts-container .post-item .post-image-wrap img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+#posts-container #primary-posts-container .post-item:first-child .post-image-wrap {
+    max-height: 300px;
+    overflow: hidden;
+}
+#posts-container #secondary-posts-container {
+    width: calc(25% - 20px);
+    padding-right: 20px;
+}
+#posts-container #secondary-posts-container .post-item {
+    padding-bottom: 60px;
+    border-bottom: 1px solid var(--light-gray);
+
+}
+#posts-container #tertiary-posts-container {
+    width: 25%;
+}
+#posts-container #tertiary-posts-container .post-item {
+    width: 100%;
+    margin-right: 10px;
+    margin-bottom: 20px;
+}
+#posts-container #tertiary-posts-container .post-item .post-image-wrap {
+    width: 100%;
+    padding-top: 56.25%;
+    position: relative;
+    overflow: hidden;
+}
+#posts-container #tertiary-posts-container .post-item .post-image-wrap img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+#posts-container h3 {
+    color: var(--dark-gray);
+    margin-top: 5px;
+}
+#posts-container img {
+    max-width: 100%;
+}
+
+@media only screen and (max-width: 991px) {
+    #posts-container #primary-posts-container, #posts-container #secondary-posts-container, #posts-container #tertiary-posts-container {
+        width: 100%;
+        margin-right: 0;
+        padding-right: 0;
+    }
+    #posts-container #primary-posts-container .post-item, #posts-container #primary-posts-container .post-item:first-child{
+        min-height: 0;
+    }
+}
+@media only screen and (max-width: 767px) {
+    #posts-container #primary-posts-container .post-item, #posts-container #tertiary-posts-container .post-item{
+        width: 100%;
+        margin-right: 0;
+    }
+    #posts-container #primary-posts-container .post-item:last-child{
+        margin-left: 0px;
+    }
+}
