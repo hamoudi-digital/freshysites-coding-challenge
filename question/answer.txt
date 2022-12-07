@@ -1,0 +1,9 @@
+Question: Consider the following scenario:
+You have just installed and activated a new theme. The new theme uses custom post types and for those posts you are getting a 404 error.
+Assuming that the problem has nothing to do with your .htaccess file, what would you try to fix the problem?
+
+Answer:
+From my experience, this is typically an issue resolved by navigating to "Settings > Permalinks" and clicking "Save Changes". I may need to establish a new permalink structure if necessary.
+If that wouldn't work, I would navigate to the wp-config file and activate debug mode to attempt to see if the theme itself is throwing any errors and debug from there.
+Assuming that fails, I would navigate to the host to see if the server is logging any errors that could point to the issue.
+
