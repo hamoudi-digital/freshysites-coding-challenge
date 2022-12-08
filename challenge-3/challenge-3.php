@@ -1,6 +1,7 @@
 <?php
 
 // registers the event custom post type 
+add_action('init', 'create_event_post_type');
 function create_event_post_type() {
     register_post_type(
         'event',
@@ -24,9 +25,9 @@ function create_event_post_type() {
         )
         )
 }
-add_action('init', 'create_event_post_type');
 
 // adds short title meta box to the event custom post type
+add_action('add_meta_boxes', 'add_short_title_meta_box');
 function add_short_title_meta_box() {
     add_meta_box(
         'short-title',
@@ -35,7 +36,6 @@ function add_short_title_meta_box() {
         'event'
     );
 }
-add_action('add_meta_boxes', 'add_short_title_meta_box');
 
 // callback function to create short title meta box
 function short_title_meta_box_callback($post) {
@@ -48,6 +48,7 @@ function short_title_meta_box_callback($post) {
 }
 
 // runs validation and saves short title to the database
+add_action( 'save_post', 'save_short_title_meta_box_data' );
 function save_short_title_meta_box_data($post_id) {
     // verifies nonce is set
     if (!isset($_POST['short_title_nonce']) || !wp_verify_nonce($_POST['short_title_nonce'], 'short_title_nonce')) {
@@ -76,12 +77,12 @@ function save_short_title_meta_box_data($post_id) {
     // updates short title in the database
     update_post_meta( $post_id, 'short_title', $my_data );
 }
-add_action( 'save_post', 'save_short_title_meta_box_data' );
 
 // replaces title with short title in event archive pages
+add_filter('get_the_archive_title', 'replace_event_title_archive_page');
 function replace_event_title_archive_page($post) {
     $short_title = esc_attr get_post_meta($post->ID, 'short_title', true );
     return $short_title;
 }
-add_filter('get_the_archive_title', 'replace_event_title_archive_page');
+
 ?>

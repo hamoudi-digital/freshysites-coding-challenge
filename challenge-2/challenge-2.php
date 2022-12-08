@@ -6,6 +6,7 @@ function ci_get_related_posts( $post_id, $related_count, $args = array() ) {
    ) );
 
    $related_args = array(
+        // left $post_id out of get_post_type() which defaults to current post
        'post_type'      => get_post_type(),
        'posts_per_page' => $related_count,
        'post_status'    => 'publish',
