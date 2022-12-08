@@ -20,11 +20,13 @@ function ci_get_related_posts( $post_id, $related_count, $args = array() ) {
             )
        )
    );
-
-   $post       = get_post();
+   
+   // left $post_id out of get_post() which defaults to current post
+   $post = get_post();
    $taxonomies = get_object_taxonomies( $post, 'names' );
 
    foreach ( $taxonomies as $taxonomy ) {
+       // used $post instead of $post_id
        $terms = get_the_terms( $post, $taxonomy );
        if ( empty( $terms ) ) {
            continue;
