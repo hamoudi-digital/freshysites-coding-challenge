@@ -25,6 +25,7 @@ function create_event_post_type() {
         )
         )
 }
+
 // adds short title meta box to the event custom post type
 add_action('add_meta_boxes', 'add_short_title_meta_box');
 function add_short_title_meta_box() {
